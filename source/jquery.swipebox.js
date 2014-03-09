@@ -259,7 +259,7 @@
 					bars.addClass('visible-bars');
 					$this.setTimeout();
 
-					$('body').bind('touchstart', function(e){
+					$('#swipebox-slider').bind('touchstart', function(e){
 
 						$(this).addClass('touching');
 
@@ -642,9 +642,9 @@
 			 */
 			destroy : function(){
 				$(window).unbind('keyup');
-				$('body').unbind('touchstart');
-				$('body').unbind('touchmove');
-				$('body').unbind('touchend');
+				$('#swipebox-slider').unbind('touchstart');
+				$('#swipebox-slider').unbind('touchmove');
+				$('#swipebox-slider').unbind('touchend');
 				$('#swipebox-slider').unbind();
 				$('#swipebox-overlay').remove();
 				if (!$.isArray(elem))
