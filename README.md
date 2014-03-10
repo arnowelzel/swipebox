@@ -3,7 +3,8 @@ Swipebox
 
 A touchable jQuery lightbox.
 
-[View project page](http://brutaldesign.github.com/swipebox)
+[Original project page](http://brutaldesign.github.com/swipebox)
+[Fork by Arno Welzel](https://github.com/arnowelzel/swipebox)
 
 ##What is Swipebox ?
 
@@ -16,6 +17,16 @@ Swipebox is a jQuery "lightbox" plugin for desktop, mobile and tablet.
 - CSS transitions with jQuery fallback
 - Retina support for UI icons
 - Easy CSS customization
+
+###Additional stuff in this fork
+
+- If there is no "title" attribute in the image link the plugin will try to use the "alt" attribute
+  of the image inside the link element
+- Clicking on the picture will show and hide the navigation/title bar in desktop browsers
+- Bound touch event to the slider and not to the body, so click events can still be used for other elements
+- Modified handler for navigation buttons to use click events instead of touch events to avoid problems
+  with some mobile browsers (e.g. "endless swiping" on stock Android browser or Chrome or re-opening the
+  box when closing the lightbox using the "x" button and underneath is a clickable image)
 
 ###Compatibility
 
@@ -67,11 +78,7 @@ beforeOpen: function(){} , // called before opening
 afterClose: function(){} // called after closing
 ```
 
-###Pull Requests
-
-I want to keep this plugin as simple as possible. I won't merge pull requests for additional features such as download buttons, social like buttons, IE8 compatibility etc... But feel free to fork the project and customize it to suit to your needs. Most wanted PR are for bug fixes. Also, a future improvement will be to allow zoom on touchable devices.
-
-Thanks for your understanding and thank you all for your helpful support!
-
 ####Credits
+
+Original code by [Constantin Saguin](https://github.com/brutaldesign)
 Photos by [Daniele Zedda](http://www.flickr.com/photos/astragony/)
