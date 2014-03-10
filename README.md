@@ -4,6 +4,7 @@ Swipebox
 A touchable jQuery lightbox.
 
 [Original project page](http://brutaldesign.github.com/swipebox)
+
 [Fork by Arno Welzel](https://github.com/arnowelzel/swipebox)
 
 ##What is Swipebox ?
@@ -81,4 +82,5 @@ afterClose: function(){} // called after closing
 ####Credits
 
 Original code by [Constantin Saguin](https://github.com/brutaldesign)
+
 Photos by [Daniele Zedda](http://www.flickr.com/photos/astragony/)
