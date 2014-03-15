@@ -91,6 +91,7 @@ html.swipebox {
   z-index: 999;
   height: 50px;
   width: 100%;
+  overflow: hidden;
 }
 
 #swipebox-action {
