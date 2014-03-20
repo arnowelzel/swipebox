@@ -4,7 +4,7 @@
 @author       Arno Welzel
 @link         http://csag.co
 @github       https://github.com/arnowelzel/swipebox
-@version      1.2.1
+@version      1.2.2
 @license      MIT License
 
 ----------------------------------------------------------------------------------------------*/
