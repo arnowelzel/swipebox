@@ -572,7 +572,7 @@
 				
 				}
 
-				return '<div class="swipebox-video-container" style="max-width:'+plugin.settings.videomaxWidth+'px"><div class="swipebox-video">'+iframe+'</div></div>';
+				return '<div class="swipebox-video-container" style="max-width:'+plugin.settings.videoMaxWidth+'px"><div class="swipebox-video">'+iframe+'</div></div>';
 			},
 			
 			/**
