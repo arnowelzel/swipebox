@@ -40,8 +40,10 @@
 					<a id="swipebox-prev"></a>\
 					<a id="swipebox-next"></a>\
 				</div>\
-		</div>';
-
+		</div>',
+		oldOffsetX = 0,
+		oldOffsetY = 0;
+		
 		plugin.settings = {}
 
 		plugin.init = function(){
@@ -291,12 +293,20 @@
 							// swipeRight
 							$this.getNext();
 						
-						}	
+						}else{
+							// tap
+							if(!bars.hasClass('visible-bars')){
+								$this.showBars();
+								$this.setTimeout();
+							}else{
+								$this.clearTimeout();
+								$this.hideBars();
+							}
+						}
 
 						$('.touching').off('touchmove').removeClass('touching');
 						
 					});
-
 				}
 			},
 
@@ -361,15 +371,20 @@
 				bars.addClass('visible-bars');
 				$this.setTimeout();
 				
-				$('#swipebox-slider').click(function(e){
-					if(!bars.hasClass('visible-bars')){
-						$this.showBars();
-						$this.setTimeout();
-					} else {
-						$this.clearTimeout();
-						$this.hideBars();
-					}
-				});
+				// Some browsers fire click events, even if touch
+				// was already handled - so add click handler in the
+				// slider only for non-touch devices
+				if(!isTouch) {
+					$('#swipebox-slider').click(function(e){
+						if(!bars.hasClass('visible-bars')){
+							$this.showBars();
+							$this.setTimeout();
+						} else {
+							$this.clearTimeout();
+							$this.hideBars();
+						}
+					});
+				}
 
 				$('#swipebox-action').hover(function() {
 				  		$this.showBars();
@@ -466,6 +481,14 @@
 			 * Open slide
 			 */
 			openSlide : function (index){
+				// Workaround for browsers which  don't position the overlay properly:
+				// Remember current scroll position and then scroll to the top to
+				// make sure, the slider (which is on top) is visible
+				oldOffsetX = $(window).scrollLeft();
+				oldOffsetY = $(window).scrollTop();
+				$(window).scrollLeft(0);
+				$(window).scrollTop(0);
+				
 				$('html').addClass('swipebox');
 				$(window).trigger('resize'); // fix scroll bar visibility on desktop
 				this.setSlide(index, true);
@@ -625,6 +648,10 @@
 				$('html').removeClass('swipebox');
 				$(window).trigger('resize');
 				this.destroy();
+				
+				// Restore old scroll position
+				$(window).scrollLeft(oldOffsetX);
+				$(window).scrollTop(oldOffsetY);
 			},
 
 			/**
