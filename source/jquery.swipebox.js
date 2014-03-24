@@ -4,7 +4,7 @@
 @author       Arno Welzel
 @link         http://csag.co
 @github       https://github.com/arnowelzel/swipebox
-@version      1.2.2
+@version      1.2.3
 @license      MIT License
 
 ----------------------------------------------------------------------------------------------*/
@@ -291,16 +291,6 @@
 							// swipeRight
 							$this.getNext();
 						
-						}else{
-							// tap
-							if(!bars.hasClass('visible-bars')){
-							$this.showBars();
-							$this.setTimeout();
-						}else{
-							$this.clearTimeout();
-							$this.hideBars();
-						}
-
 						}	
 
 						$('.touching').off('touchmove').removeClass('touching');
