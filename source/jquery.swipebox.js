@@ -4,7 +4,7 @@
 @author       Arno Welzel
 @link         http://csag.co
 @github       https://github.com/arnowelzel/swipebox
-@version      1.2.3
+@version      1.2.4
 @license      MIT License
 
 ----------------------------------------------------------------------------------------------*/
@@ -484,8 +484,11 @@
 				// Workaround for browsers which  don't position the overlay properly:
 				// Remember current scroll position and then scroll to the top to
 				// make sure, the slider (which is on top) is visible
-				oldOffsetX = $(window).scrollLeft();
-				oldOffsetY = $(window).scrollTop();
+				if(oldOffsetX == 0 && oldOffsetY == 0)
+				{
+					oldOffsetX = $(window).scrollLeft();
+					oldOffsetY = $(window).scrollTop();
+				}
 				$(window).scrollLeft(0);
 				$(window).scrollTop(0);
 				
@@ -650,8 +653,13 @@
 				this.destroy();
 				
 				// Restore old scroll position
-				$(window).scrollLeft(oldOffsetX);
-				$(window).scrollTop(oldOffsetY);
+				if(oldOffsetX != 0 || oldOffsetY != 0)
+				{
+					$(window).scrollLeft(oldOffsetX);
+					$(window).scrollTop(oldOffsetY);
+					oldOffsetX = 0;
+					oldOffsetY = 0;
+				}
 			},
 
 			/**
